@@ -6,5 +6,5 @@
 # @osm_dir = 
 
 # PROJECT 1
-@osm_name = "test1.osm"
-@osm_dir = "C:/Users/eringold/BSUG/test_models"
+@osm_name = "606 - Whole Site Model_v330_20220517_PROP.osm"
+@osm_dir = "C:\\Users\\ianr\\OneDrive - Rushing\\Documents\\_Project\\606 Bellevue\\Shoebox Sketchup Geometry"

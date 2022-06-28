@@ -28,7 +28,7 @@ module ModelFile
 		unique_name = osm_path
 		while File.exist?(unique_name)
 			count +=1
-			unique_name = "#{File.join(File.dirname(unique_name), File.basename(unique_name,".*"))}_#{count}#{File.extname(unique_name)}"
+			unique_name = "#{File.join(File.dirname(unique_name), File.basename(osm_path,".*"))}_#{count}#{File.extname(unique_name)}"
 		end
 		return unique_name
   end

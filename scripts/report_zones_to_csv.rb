@@ -17,32 +17,36 @@ model = ModelFile.load_model(osm_path)
 #### do stuff here
 
 # create path to save csv file
-report_path = "#{@osm_dir}/#{@osm_name.gsub('.osm','')} space list.csv"
+report_path = "#{@osm_dir}/#{@osm_name.gsub('.osm','')} zones.csv"
 
 # open csv file for writing
 csv = CSV.open(report_path, 'w')
 
 # write header row 
-csv << ["Space Name", "Area", "LPD", "Equip PD"]
+csv << ["Zone Name", "Area", "Cooling Schedule", "Heating Schedule"]
 
 # loop through each space in model
-model.getSpaces.each do |space|
+model.getThermalZones.each do |zone|
   
   # create new array to hold space information
-  space_info = []
+  zone_info = []
 
   # add space name to array
-  space_info << space.name.get
+  zone_info << zone.name.get
 
   # get space floor area
-  area = space.floorArea  # returns a double, in m^2 https://s3.amazonaws.com/openstudio-sdk-documentation/cpp/OpenStudio-2.7.0-doc/model/html/classopenstudio_1_1model_1_1_space.html#a7d087ac39439b48c4f9b762c5d19246b
+  area = zone.floorArea  # returns a double, in m^2 https://s3.amazonaws.com/openstudio-sdk-documentation/cpp/OpenStudio-2.7.0-doc/model/html/classopenstudio_1_1model_1_1_space.html#a7d087ac39439b48c4f9b762c5d19246b
   # convert area from m^2 to ft^2)
   area_ip = OpenStudio.convert(area,"m^2","ft^2").get
   # add to array
   space_info << area_ip
 
-  # get lpd
-  lpd = space.lightingPowerPerFloorArea
+  # get thermostat
+  tstat = zone.thermostat
+  if tstat.is_initialized
+    coolingsched = tstat.
+  end
+  
   # convert and add to array
   space_info << OpenStudio.convert(lpd,"W/m^2","W/ft^2").get
 

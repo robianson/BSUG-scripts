@@ -23,7 +23,7 @@ report_path = "#{@osm_dir}/#{@osm_name.gsub('.osm','')} space list.csv"
 csv = CSV.open(report_path, 'w')
 
 # write header row 
-csv << ["Space Name", "Area", "LPD", "Equip PD"]
+csv << ["Space Name", "Area", "LPD", "Equip PD","x","y","z"]
 
 # loop through each space in model
 model.getSpaces.each do |space|
@@ -48,6 +48,12 @@ model.getSpaces.each do |space|
 
   # get equipment pd and add to array
   space_info << OpenStudio.convert(space.electricEquipmentPowerPerFloorArea,"W/m^2","W/ft^2").get
+
+  #Add x y z coords
+  space_info << space.xOrigin
+  space_info << space.yOrigin
+  space_info << space.zOrigin
+
 
   # write row to file
   csv << space_info

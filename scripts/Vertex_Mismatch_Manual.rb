@@ -11,10 +11,10 @@ backup = ModelFile.unique_name(osm_path)
 model.save_model(File.basename(backup),@osm_dir)
 
 #### do stuff here
-degens = ['SURFACE 849','SURFACE 1150']
+mismatch = ["SURFACE 1946","SURFACE 850","SURFACE 2084","SURFACE 443","SURFACE 850","SURFACE 1946"]
 
 # loop through each story in model
-degens.each do |surf|
+mismatch.each do |surf|
   
   surface = model.getSurfaceByName(surf).get
   #get surface

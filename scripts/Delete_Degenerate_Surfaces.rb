@@ -11,8 +11,7 @@ backup = ModelFile.unique_name(osm_path)
 model.save_model(File.basename(backup),@osm_dir)
 
 #### do stuff here
-degens = ['SURFACE 428','SURFACE 1710','SURFACE 1814','SURFACE 593','SURFACE 1909','SURFACE 1905',
-'SURFACE 799','SURFACE 802','SURFACE 777','SURFACE 1095','SURFACE 1127','SURFACE 1021','SURFACE 1521','SURFACE 1542']
+degens = ['SURFACE 599','SURFACE 758']
 
 # loop through each story in model
 degens.each do |surf|

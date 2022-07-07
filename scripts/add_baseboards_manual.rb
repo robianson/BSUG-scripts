@@ -66,7 +66,7 @@ zones.each do |z|
     puts "Adding Baseboard for '#{z.name}'."
     #create an Electric Baseboard
     elec_baseboard = OpenStudio::Model::ZoneHVACBaseboardRadiantConvectiveElectric.new(model)
-
+    elec_baseboard.setName("#{z.name}_Elec Baseboard")
     #add the electric Baseboard Heater to the zone
     elec_baseboard.addToThermalZone(z)
 end

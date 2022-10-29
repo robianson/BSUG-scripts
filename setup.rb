@@ -6,5 +6,5 @@
 # @osm_dir = 
 
 # PROJECT 1
-@osm_name = "606 - Whole Site Model_v330_20220705_PROP_Reassign Coils.osm"
+@osm_name = "606 - Whole Site Model_v330_20220720_BASE_RemoveT3Test.osm"
 @osm_dir = "C:\\Users\\ianr\\OneDrive - Rushing\\Documents\\_Project\\606 Bellevue\\Shoebox Sketchup Geometry"

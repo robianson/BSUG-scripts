@@ -11,21 +11,29 @@ backup = ModelFile.unique_name(osm_path)
 model.save_model(File.basename(backup),@osm_dir)
 
 #### do stuff here
+floor = model.getConstructionByName('Typical Insulated Carpeted 6in Slab Floor').get
+roof = model.getConstructionByName('Champion - Above Deck Roof').get
+puts floor
+
 model.getBuildingStorys.each do |story|
   
 
   
   # loop through spaces and set thermal zone multipliers
   story.spaces.each do |space|    
-    if story.name.to_s.include? "L6"
+    if story.name.to_s.include? "Building Story 1"
     
       surfs = space.surfaces
       surfs.each do |surf|
         if surf.surfaceType == "Floor"
-          if surf.outsideBoundaryCondition != "Surface"
+          #if surf.outsideBoundaryCondition != "Surface"
             surf.setOutsideBoundaryCondition("Adiabatic")
+            surf.setConstruction(floor)
             puts surf.name
-          end
+          #end
+        elsif surf.surfaceType == "RoofCeiling"
+          surf.setConstruction(roof)
+          puts(surf.name)
         end
       end
     elsif story.name.to_s.include? "L17"
